@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Journal">
+  <title>Entry · Trading Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="link" href="index.html">← Dashboard</a>
+
+    <div id="missing" hidden class="card empty" style="margin-top:16px">
+      This entry could not be found.<br><a href="index.html">Back to Dashboard</a>
+    </div>
+
+    <div id="content">
+      <h1 id="hTitle" style="margin-top:10px"></h1>
+      <p class="sub" id="hMeta"></p>
+      <div class="row" id="hTags" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"></div>
+      <p class="hint" id="status">Changes save automatically.</p>
+
+      <details class="stage" id="dDetails">
+        <summary>Details</summary>
+        <div class="card">
+          <div class="field"><label for="fType">Type</label>
+            <select id="fType" data-k="type"><option value="analysis">Analysis</option><option value="trade">Trade</option></select></div>
+          <div class="field"><label for="fDate">Date</label><input type="date" id="fDate" data-k="date"></div>
+          <div class="field"><label for="fInstrument">Instrument</label><input id="fInstrument" data-k="instrument" autocapitalize="characters"></div>
+          <div class="field" style="margin-bottom:0"><label for="fTitle">Title</label><input id="fTitle" data-k="title"></div>
+        </div>
+      </details>
+
+      <details class="stage" id="dS1">
+        <summary>Stage 1 · Before the move</summary>
+        <div class="card">
+          <div class="subhead" style="margin-top:0">Chart before the outcome <span id="count1"></span></div>
+          <div class="thumbs" id="thumbs1"></div>
+          <label class="upload" id="upload1"><input type="file" id="file1" accept="image/*" multiple hidden><span>+ Add screenshot</span></label>
+
+          <div class="subhead">Forecast</div>
+          <div class="field"><label for="fBias">Bias</label>
+            <select id="fBias" data-k="stage1_forecast.bias">
+              <option value="">Choose bias</option><option value="bullish">Bullish</option><option value="bearish">Bearish</option><option value="neutral">Neutral</option>
+            </select></div>
+          <div class="field"><label>Marked on chart</label><div class="chipbtns" id="markings"></div></div>
+          <div class="field"><label for="fSetup1">Setup type</label><select id="fSetup1" data-k="stage1_forecast.setup" data-opts="Setup" data-ph="Choose setup"></select></div>
+          <div class="field"><label for="fContext1">Market context</label><select id="fContext1" data-k="stage1_forecast.marketContext" data-opts="Market context" data-ph="Choose context"></select></div>
+
+          <div class="subhead">Plan</div>
+          <div class="field"><label for="fEntry">Expected entry</label><input id="fEntry" data-k="stage1_forecast.entry"></div>
+          <div class="field"><label for="fInval">Invalidation</label><input id="fInval" data-k="stage1_forecast.invalidation"></div>
+          <div class="field"><label for="fTarget">Target</label><input id="fTarget" data-k="stage1_forecast.target"></div>
+          <div class="field" style="margin-bottom:0"><label for="fReason">Reasoning</label><textarea id="fReason" data-k="stage1_forecast.reasoning" placeholder="Why did you expect this move?"></textarea></div>
+        </div>
+      </details>
+
+      <details class="stage" id="dS2" open>
+        <summary>Stage 2 · What happened</summary>
+        <div class="card">
+          <div class="subhead" style="margin-top:0">Chart after the move <span id="count2"></span></div>
+          <div class="thumbs" id="thumbs2"></div>
+          <label class="upload" id="upload2"><input type="file" id="file2" accept="image/*" multiple hidden><span>+ Add screenshot</span></label>
+          <div class="field" style="margin:14px 0 0"><label for="fOutcome">Notes</label>
+            <textarea id="fOutcome" data-k="stage2_outcome.notes" placeholder="What actually happened after your forecast?"></textarea></div>
+        </div>
+      </details>
+
+      <details class="stage" id="dS3" open>
+        <summary>Stage 3 · Your verdict</summary>
+        <div class="card">
+          <div class="field"><label for="fDir">Was the directional bias correct?</label>
+            <select id="fDir" data-k="stage3_verdict.directionCorrect"><option value="">Choose</option><option value="yes">Yes</option><option value="partly">Partly</option><option value="no">No</option></select></div>
+          <div class="field"><label for="fValid">Was the setup valid according to your rules?</label>
+            <select id="fValid" data-k="stage3_verdict.setupValid"><option value="">Choose</option><option value="yes">Yes</option><option value="no">No</option></select></div>
+          <div class="field"><label for="fPlan">Did entry and risk management follow your plan?</label>
+            <select id="fPlan" data-k="stage3_verdict.planFollowed"><option value="">Choose</option><option value="yes">Yes</option><option value="partly">Partly</option><option value="no">No</option></select></div>
+
+          <div class="subhead">What it was</div>
+          <div class="field"><label for="fSetup3">Setup type</label><select id="fSetup3" data-k="stage3_verdict.setup" data-opts="Setup" data-ph="Choose setup"></select></div>
+          <div class="field"><label for="fContext3">Market context</label><select id="fContext3" data-k="stage3_verdict.marketContext" data-opts="Market context" data-ph="Choose context"></select></div>
+          <p class="hint" style="margin-top:-4px">Prefilled from your forecast. Change them if the reality was different.</p>
+
+          <div class="subhead">The lesson</div>
+          <div class="field"><label for="pmCat">Category</label><select id="pmCat" data-k="stage3_verdict.primaryMistake.category"></select></div>
+          <div class="field"><label for="pmItem">Primary mistake or behaviour</label><select id="pmItem" data-k="stage3_verdict.primaryMistake.mistake"></select></div>
+          <div class="field"><label for="fEvidence">Evidence</label><textarea id="fEvidence" data-k="stage3_verdict.evidence" placeholder="What shows this happened?"></textarea></div>
+          <div class="field"><label for="fCause">What caused the loss or missed opportunity?</label><textarea id="fCause" data-k="stage3_verdict.cause"></textarea></div>
+          <div class="field"><label for="fNext">What will you do differently next time?</label><textarea id="fNext" data-k="stage3_verdict.nextTime"></textarea></div>
+          <div class="field" style="margin-bottom:14px"><label for="fFix">Corrective action</label><textarea id="fFix" data-k="stage3_verdict.correctiveAction" placeholder="A rule you can follow next time"></textarea></div>
+          <button class="btn" id="reviewBtn" type="button">Mark as reviewed</button>
+          <button class="btn secondary" id="libBtn" type="button" style="margin-top:10px">Save lesson to Library</button>
+        </div>
+      </details>
+
+      <div style="height:22px"></div>
+      <button class="btn danger" id="deleteBtn" type="button">Delete this entry</button>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lb" hidden>
+    <button type="button" id="lbClose" aria-label="Close">×</button>
+    <div class="lbScroll" id="lbScroll"><img id="lbImg" alt="Full size picture"></div>
+  </div>
+
+  <nav id="nav"></nav>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/entry.js"></script>
+</body>
+</html>

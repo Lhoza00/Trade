@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Journal">
+  <title>Create · Trading Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <h1>Create</h1>
+    <p class="sub">Stage 1 · Before the move. Save your forecast now, review it later.</p>
+
+    <div class="seg two" id="typeSeg" style="margin-top:14px">
+      <button type="button" data-t="analysis" aria-pressed="true">Analysis</button>
+      <button type="button" data-t="trade" aria-pressed="false">Trade</button>
+    </div>
+
+    <h2>Basics</h2>
+    <div class="card">
+      <div class="field"><label for="date">Date</label><input type="date" id="date"></div>
+      <div class="field"><label for="instrument">Instrument</label><input id="instrument" placeholder="e.g. EURUSD, NAS100, XAUUSD" autocapitalize="characters"></div>
+      <div class="field" style="margin-bottom:0"><label for="title">Title <span class="sub">(optional)</span></label><input id="title" placeholder="e.g. London sweep into daily FVG"></div>
+    </div>
+
+    <h2>Chart before the outcome <small id="imgCount"></small></h2>
+    <div class="card">
+      <div class="thumbs" id="thumbs"></div>
+      <label class="upload" id="uploadBtn">
+        <input type="file" id="file" accept="image/*" multiple hidden>
+        <span>+ Add screenshot</span>
+      </label>
+      <p class="hint">Pictures are shrunk automatically to save phone storage.</p>
+    </div>
+
+    <h2>Forecast</h2>
+    <div class="card">
+      <div class="field"><label for="bias">Bias</label>
+        <select id="bias">
+          <option value="">Choose bias</option>
+          <option value="bullish">Bullish</option>
+          <option value="bearish">Bearish</option>
+          <option value="neutral">Neutral</option>
+        </select>
+      </div>
+      <div class="field"><label>Marked on chart</label><div class="chipbtns" id="markings"></div></div>
+      <div class="field"><label for="setup">Setup type</label><select id="setup"></select></div>
+      <div class="field"><label for="context">Market context</label><select id="context"></select></div>
+    </div>
+
+    <h2>Plan</h2>
+    <div class="card">
+      <div class="field"><label for="entry">Expected entry</label><input id="entry" placeholder="Price or condition"></div>
+      <div class="field"><label for="invalidation">Invalidation</label><input id="invalidation" placeholder="Where the idea is wrong"></div>
+      <div class="field" style="margin-bottom:0"><label for="target">Target</label><input id="target" placeholder="Where you expect price to go"></div>
+    </div>
+
+    <h2>Reasoning</h2>
+    <div class="card">
+      <textarea id="reasoning" placeholder="Why do you expect this move?"></textarea>
+    </div>
+
+    <div style="height:18px"></div>
+    <button class="btn" id="save" type="button">Save analysis</button>
+  </main>
+
+  <nav id="nav"></nav>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/create.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "project": "Trading & Wellbeing Journal",
+  "hosting": "GitHub Pages (static HTML/CSS/JS, no build step)",
+  "storage": "Browser localStorage, key 'tj.v1'. Images are compressed (max 1000px JPEG) and stored as data URLs. Use Backup (Step 7) regularly because localStorage is about 5MB.",
+  "principles": [
+    "Journal of improvement, no profit/percentage calculations",
+    "Everything categorical is a dropdown",
+    "Mobile first, bottom navbar on every page",
+    "One step = one page + shared files, resumable at any step"
+  ],
+  "shared_files": ["css/style.css", "js/store.js", "js/ui.js"],
+  "data_model": {
+    "entry": {
+      "id": "string",
+      "type": "analysis | trade",
+      "date": "YYYY-MM-DD",
+      "title": "string",
+      "instrument": "string",
+      "stage1_forecast": {
+        "images": ["dataURL"],
+        "bias": "bullish | bearish | neutral",
+        "markings": ["FVG", "Order block", "Liquidity", "Structure"],
+        "setup": "dropdown (Setup category), chosen at forecast time",
+        "marketContext": "dropdown (Market context category)",
+        "entry": "string",
+        "invalidation": "string",
+        "target": "string",
+        "reasoning": "string"
+      },
+      "stage2_outcome": { "images": ["dataURL"], "notes": "string" },
+      "stage3_verdict": {
+        "directionCorrect": "yes | no | partly",
+        "setupValid": "yes | no",
+        "planFollowed": "yes | no | partly",
+        "setup": "dropdown",
+        "marketContext": "dropdown",
+        "primaryMistake": { "category": "dropdown", "mistake": "dropdown" },
+        "evidence": "string",
+        "cause": "string",
+        "nextTime": "string",
+        "correctiveAction": "string",
+        "reviewed": "boolean"
+      }
+    },
+    "checkin": { "date": "YYYY-MM-DD", "mood": "1-5", "energy": "1-5", "sleep": "1-5", "stress": "1-5", "note": "string" },
+    "library_item": { "id": "string", "kind": "lesson | strategy | mistake | reference", "title": "string", "body": "string", "images": [], "category": "optional dropdown", "item": "optional dropdown", "source": "entry id or null", "createdAt": "ms", "updatedAt": "ms" }
+  },
+  "categories": {
+    "Setup": ["FVG", "Order block", "BOS/CHOCH", "Liquidity sweep"],
+    "Market context": ["Daily bias", "Session", "Trend", "Volatility"],
+    "Execution mistake": ["Early entry", "Late entry", "Moved stop-loss"],
+    "Psychological mistake": ["Impatience", "Fear", "Revenge trading", "Overconfidence"],
+    "Risk mistake": ["Oversized position", "Poor stop placement", "Excessive risk"],
+    "External factor": ["Spread", "Slippage", "Platform issue"],
+    "Positive behaviour": ["Waited for confirmation", "Followed plan", "Skipped invalid setup"]
+  },
+  "steps": [
+    { "step": 1, "page": "index.html (Dashboard)", "status": "done", "scope": "Folder structure, shared CSS, storage layer, bottom navbar, dashboard with daily wellbeing check-in, today's analysis, summary counts, recent activity cards, stub pages for the rest" },
+    { "step": 2, "page": "create.html", "status": "done", "scope": "Choose Analysis or Trade, date/title/instrument, Stage 1 forecast form with image upload, category dropdowns, save then card appears on Dashboard" },
+    { "step": 3, "page": "entry.html?id=", "status": "done", "scope": "Open a card: view and edit Stage 1, add Stage 2 outcome pictures, Stage 3 verdict with dropdown categories, delete entry" },
+    { "step": 4, "page": "calendar.html", "status": "done", "scope": "Month grid with dots for days that have entries, tap a day to see its analysis, trades and check-in" },
+    { "step": 5, "page": "library.html", "status": "done", "scope": "Saved lessons, strategies, mistakes, reference; add/edit with pictures; option to save a reviewed entry's lesson to the library" },
+    { "step": 6, "page": "progress.html", "status": "done", "scope": "Bias accuracy, setup validity, plan followed, recurring mistakes by category, positive behaviours, wellbeing vs outcome trends (counts only, no money)" },
+    { "step": 7, "page": "settings.html", "status": "done", "scope": "Backup/restore JSON, storage usage meter, GitHub Pages deploy README, PWA manifest, polish" }
+  ]
+}

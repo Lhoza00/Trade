@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Journal">
+  <title>Settings · Trading Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <a class="link" href="index.html">← Dashboard</a>
+    <h1 style="margin-top:10px">Settings</h1>
+    <p class="sub">Your journal lives only in this browser on this phone. Back it up now and then.</p>
+
+    <h2>Storage</h2>
+    <div class="card">
+      <div id="storageText"></div>
+      <div class="meter" id="meter" role="img" aria-label="Storage used"><div class="fill" id="meterFill"></div></div>
+      <p class="sub" id="storageDetail"></p>
+      <p class="hint" id="storageWarn" hidden></p>
+    </div>
+
+    <h2>Backup</h2>
+    <div class="card">
+      <p class="sub" id="lastBackup"></p>
+      <div class="stackbtn" style="margin-top:12px">
+        <button class="btn" id="dlBtn" type="button">Download backup</button>
+        <button class="btn secondary" id="shareBtn" type="button" hidden>Share backup (save to Files or Drive)</button>
+      </div>
+      <p class="hint">The backup is one file with everything, including pictures. Keep a copy somewhere outside your phone.</p>
+    </div>
+
+    <h2>Restore</h2>
+    <div class="card">
+      <p class="sub">Choose a backup file you downloaded earlier.</p>
+      <label class="upload" style="margin-top:10px"><input type="file" id="restoreFile" accept=".json,application/json" hidden><span>Choose backup file</span></label>
+      <div id="restoreBox" hidden style="margin-top:14px"></div>
+    </div>
+
+    <h2>Install and offline</h2>
+    <div class="card">
+      <p id="installStatus"></p>
+      <p class="sub" id="offlineStatus" style="margin-top:6px"></p>
+      <div class="stackbtn" style="margin-top:12px">
+        <button class="btn" id="installBtn" type="button" hidden>Install app</button>
+      </div>
+      <p class="hint"><b>Android (Chrome):</b> menu, then "Install app" or "Add to Home screen".<br>
+        <b>iPhone (Safari):</b> Share button, then "Add to Home Screen". Safari can clear a website's saved data after a week of not opening it, and installing it to the Home Screen avoids that.</p>
+      <div id="persistBox" hidden style="margin-top:12px">
+        <p class="sub" id="persistStatus"></p>
+        <div class="stackbtn" style="margin-top:8px"><button class="btn secondary" id="persistBtn" type="button">Ask the browser to protect my data</button></div>
+      </div>
+    </div>
+
+    <h2>Erase</h2>
+    <div class="card">
+      <p class="sub">Removes every entry, picture, check-in and library item from this phone. Download a backup first if you might want them again.</p>
+      <div class="stackbtn" style="margin-top:12px"><button class="btn danger" id="eraseBtn" type="button">Erase all data</button></div>
+    </div>
+
+    <p class="hint" style="text-align:center;margin-top:22px">Trading &amp; Wellbeing Journal · version 1.0</p>
+  </main>
+
+  <nav id="nav"></nav>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

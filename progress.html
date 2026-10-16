@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Journal">
+  <title>Progress · Trading Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+    <h1>Progress</h1>
+    <p class="sub">Patterns from the entries you have reviewed. Counts only, no money.</p>
+
+    <div class="chipbtns" id="range" style="margin-top:14px"></div>
+
+    <div id="empty" class="card empty" style="margin-top:16px" hidden></div>
+
+    <div id="report">
+      <div class="tiles" id="tiles" style="margin-top:16px"></div>
+
+      <h2>Accuracy <small>your verdicts</small></h2>
+      <div class="card" id="accuracy"></div>
+
+      <h2>Weekly reviews <small>last 8 weeks</small></h2>
+      <div class="card" id="weekly"></div>
+
+      <h2>Recurring mistakes</h2>
+      <div class="card" id="mistakes"></div>
+
+      <h2>What you did right</h2>
+      <div class="card" id="positives"></div>
+
+      <h2>By setup</h2>
+      <div class="card" id="setups"></div>
+
+      <h2>Wellbeing and your plan</h2>
+      <div class="card" id="wellbeing"></div>
+    </div>
+  </main>
+
+  <div class="vtip" id="tip" hidden></div>
+  <nav id="nav"></nav>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/progress.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Journal">
+  <title>Library · Trading Journal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="page">
+
+    <div id="listView">
+      <div class="libhead">
+        <div><h1>Library</h1><p class="sub">Lessons, strategies, mistakes and reference.</p></div>
+        <button class="btn" id="newBtn" type="button">+ New</button>
+      </div>
+      <input class="search" id="q" type="search" placeholder="Search your library">
+      <div class="chipbtns" id="filters"></div>
+      <div id="list" style="margin-top:14px"></div>
+    </div>
+
+    <div id="editView" hidden>
+      <button type="button" class="link" id="backBtn" style="background:none;border:0;font:inherit;cursor:pointer;padding:0">← Library</button>
+      <h1 id="editTitle" style="margin-top:10px">New item</h1>
+
+      <div class="card" style="margin-top:12px">
+        <div class="field"><label for="eKind">Type</label><select id="eKind"></select></div>
+        <div class="field"><label for="eTitle">Title</label><input id="eTitle" placeholder="e.g. Wait for the confirmation candle"></div>
+        <div class="field"><label for="eBody">Notes</label><textarea id="eBody" class="tall" placeholder="Write the rule, the lesson or the reference here"></textarea></div>
+
+        <div class="subhead">Related category <span class="sub" style="text-transform:none;letter-spacing:0">(optional)</span></div>
+        <div class="field"><select id="eCat" aria-label="Category"></select></div>
+        <div class="field"><select id="eItem" aria-label="Item"></select></div>
+
+        <div class="subhead">Pictures <span id="count"></span></div>
+        <div class="thumbs" id="thumbs"></div>
+        <label class="upload" id="upload"><input type="file" id="file" accept="image/*" multiple hidden><span>+ Add picture</span></label>
+
+        <p class="hint" id="sourceLine" hidden>From a journal entry: <a class="link" id="sourceLink" href="index.html">open it</a></p>
+      </div>
+
+      <div style="height:16px"></div>
+      <button class="btn" id="saveBtn" type="button">Save</button>
+      <div style="height:10px"></div>
+      <button class="btn danger" id="deleteBtn" type="button" hidden>Delete this item</button>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lb" hidden>
+    <button type="button" id="lbClose" aria-label="Close">×</button>
+    <div class="lbScroll" id="lbScroll"><img id="lbImg" alt="Full size picture"></div>
+  </div>
+
+  <nav id="nav"></nav>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/library.js"></script>
+</body>
+</html>
